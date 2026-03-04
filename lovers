@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Love Forever</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:black;
+}
+
+svg{
+  width:380px;
+  animation:beat 1.2s infinite;
+  transform-origin:center;
+}
+
+@keyframes beat{
+  0%   { transform:scale(1); }
+  25%  { transform:scale(1.08); }
+  40%  { transform:scale(1); }
+  60%  { transform:scale(1.08); }
+  100% { transform:scale(1); }
+}
+
+.name{
+  fill:white;
+  font-size:34px;
+  font-weight:bold;
+  font-family:Arial, sans-serif;
+  text-anchor:middle;
+  dominant-baseline:middle;
+  letter-spacing:2px;
+}
+
+.date{
+  fill:white;
+  font-size:26px;
+  font-family:Arial, sans-serif;
+  text-anchor:middle;
+  dominant-baseline:middle;
+  opacity:0.9;
+}
+</style>
+</head>
+
+<body>
+
+<svg viewBox="0 0 512 512">
+
+  <defs>
+    <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff4d6d"/>
+      <stop offset="100%" stop-color="#c9184a"/>
+    </linearGradient>
+  </defs>
+
+  <path fill="url(#heartGrad)"
+    d="M256 472
+       L60 276
+       C20 236 20 170 60 130
+       C100 90 166 90 206 130
+       L256 180
+       L306 130
+       C346 90 412 90 452 130
+       C492 170 492 236 452 276
+       Z"/>
+
+  <!-- İsimler -->
+  <text x="256" y="235" class="name">
+    TUĞBA - GÖKHAN
+  </text>
+
+  <!-- Tarih -->
+  <text x="256" y="290" class="date">
+    25.05.2025
+  </text>
+
+</svg>
+
+</body>
+</html>
