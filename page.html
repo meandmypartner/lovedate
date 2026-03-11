@@ -64,15 +64,12 @@ cursor:pointer;
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
 
-document.getElementById("foto").src = "codes/"+code+"/foto.jpg";
+document.getElementById("foto").src = "./codes/"+code+"/foto.jpg";
 
-document.getElementById("sarki").src = "codes/"+code+"/sarki.mp3";
+document.getElementById("sarki").src = "./codes/"+code+"/sarki.mp3";
 
 function playMusic(){
 document.getElementById("sarki").play();
 }
 
 </script>
-
-</body>
-</html>
