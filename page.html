@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bizim Şarkımız ❤️</title>
+
+<style>
+
+body{
+margin:0;
+background:black;
+color:white;
+font-family:Arial;
+text-align:center;
+}
+
+.container{
+margin-top:50px;
+}
+
+img{
+width:80%;
+max-width:350px;
+border-radius:20px;
+box-shadow:0 0 20px pink;
+}
+
+button{
+margin-top:30px;
+padding:15px 30px;
+font-size:18px;
+border:none;
+border-radius:30px;
+background:pink;
+color:black;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Bizim Şarkımız ❤️</h1>
+
+<img id="foto">
+
+<br>
+
+<button onclick="playMusic()">Şarkıyı Başlat 🎵</button>
+
+<audio id="sarki"></audio>
+
+</div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const code = params.get("code");
+
+document.getElementById("foto").src = "codes/"+code+"/foto.jpg";
+
+document.getElementById("sarki").src = "codes/"+code+"/sarki.mp3";
+
+function playMusic(){
+document.getElementById("sarki").play();
+}
+
+</script>
+
+</body>
+</html>
