@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LoveDate ❤️</title>
+
+<style>
+
+body{
+margin:0;
+background:black;
+color:white;
+font-family:Arial;
+text-align:center;
+}
+
+.container{
+margin-top:50px;
+}
+
+img{
+width:80%;
+max-width:350px;
+border-radius:20px;
+box-shadow:0 0 20px pink;
+}
+
+button{
+margin-top:30px;
+padding:15px 30px;
+font-size:18px;
+border:none;
+border-radius:30px;
+background:pink;
+color:black;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Bizim Şarkımız ❤️</h1>
+
+<img src="foto.jpg">
+
+<br>
+
+<button onclick="playMusic()">Şarkıyı Başlat 🎵</button>
+
+<audio id="music">
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+<script>
+
+function playMusic(){
+document.getElementById("music").play();
+}
+
+</script>
+
+</body>
+</html>
