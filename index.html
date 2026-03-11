@@ -1,26 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
+
 <meta charset="UTF-8">
-<title>LoveDate</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script>
+<title>LoveDate ❤️</title>
 
-const params = new URLSearchParams(window.location.search);
-const code = params.get("code");
+<style>
 
-if(code){
-window.location.href = "codes/" + code + "/";
+body{
+background:black;
+color:white;
+font-family:Arial;
+text-align:center;
+margin-top:35vh;
 }
 
-</script>
+input{
+padding:12px;
+font-size:18px;
+border-radius:10px;
+border:none;
+text-align:center;
+}
+
+button{
+padding:12px 20px;
+font-size:18px;
+border:none;
+border-radius:10px;
+background:pink;
+margin-left:10px;
+cursor:pointer;
+}
+
+</style>
 
 </head>
 
-<body style="background:black;color:white;text-align:center;font-family:Arial;margin-top:40vh;">
+<body>
 
 <h1>LoveDate ❤️</h1>
-<p>Kod bulunamadı.</p>
+
+<p>Kodunuzu girin</p>
+
+<input id="code" placeholder="Kod">
+
+<button onclick="go()">Aç</button>
+
+<script>
+
+function go(){
+
+var code=document.getElementById("code").value;
+
+window.location.href="codes/"+code+"/";
+
+}
+
+</script>
 
 </body>
 </html>
