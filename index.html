@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>LoveDate ❤️</title>
 
 <style>
@@ -12,12 +11,12 @@ body{
 margin:0;
 background:black;
 font-family:Arial;
+overflow:hidden;
 color:white;
 text-align:center;
-overflow:hidden;
 }
 
-/* COUNTDOWN SCREEN */
+/* COUNTDOWN */
 
 #countdownScreen{
 position:fixed;
@@ -27,9 +26,8 @@ background:#c5a06a;
 display:flex;
 align-items:center;
 justify-content:center;
+animation:flicker 0.15s infinite;
 }
-
-/* film çizgileri */
 
 .filmTop,.filmBottom{
 position:absolute;
@@ -47,8 +45,6 @@ white 40px
 .filmTop{top:0;}
 .filmBottom{bottom:0;}
 
-/* + çizgileri */
-
 .crossH{
 position:absolute;
 width:100%;
@@ -62,8 +58,6 @@ height:100%;
 width:3px;
 background:black;
 }
-
-/* halkalar */
 
 .circle1{
 position:absolute;
@@ -80,8 +74,6 @@ height:340px;
 border:8px solid rgba(255,255,255,0.9);
 border-radius:50%;
 }
-
-/* dönen dilim */
 
 .wedge{
 position:absolute;
@@ -102,8 +94,6 @@ from{transform:rotate(0deg);}
 to{transform:rotate(360deg);}
 }
 
-/* sayı */
-
 #countdownNumber{
 font-size:240px;
 font-weight:900;
@@ -111,8 +101,6 @@ color:black;
 position:absolute;
 font-family:Impact,Arial Black,sans-serif;
 }
-
-/* play */
 
 .playBtn{
 width:120px;
@@ -134,6 +122,48 @@ border-bottom:20px solid transparent;
 margin-left:5px;
 }
 
+/* film grain */
+
+.grain{
+pointer-events:none;
+position:fixed;
+width:100%;
+height:100%;
+background:radial-gradient(rgba(0,0,0,0.15) 1px, transparent 1px);
+background-size:3px 3px;
+opacity:0.12;
+animation:grainMove 0.1s infinite;
+}
+
+@keyframes grainMove{
+0%{transform:translate(0,0)}
+25%{transform:translate(-2px,2px)}
+50%{transform:translate(2px,-2px)}
+75%{transform:translate(-1px,1px)}
+100%{transform:translate(1px,-1px)}
+}
+
+@keyframes flicker{
+0%{opacity:1}
+50%{opacity:0.97}
+100%{opacity:1}
+}
+
+/* kararma */
+
+#blackFade{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+opacity:0;
+pointer-events:none;
+transition:opacity 1s;
+z-index:999;
+}
+
 /* kalpler */
 
 .heart{
@@ -149,27 +179,20 @@ animation:fly 5s linear infinite;
 100%{transform:translateY(-10vh);opacity:0}
 }
 
-/* kararma */
-
-#blackFade{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:black;
-opacity:0;
-transition:opacity 1s;
-}
-
 /* kod ekranı */
 
 #codeScreen{
+position:fixed;
+width:100%;
+height:100%;
+background:black;
 display:none;
-margin-top:40vh;
+align-items:center;
+justify-content:center;
+flex-direction:column;
 }
 
-input{
+#codeScreen input{
 padding:12px;
 font-size:18px;
 border-radius:10px;
@@ -177,12 +200,14 @@ border:none;
 text-align:center;
 }
 
-button{
+#codeScreen button{
 padding:12px 20px;
 font-size:18px;
 border:none;
 border-radius:10px;
-background:pink;
+background:#e91e63;
+color:white;
+margin-top:10px;
 cursor:pointer;
 }
 
@@ -210,14 +235,20 @@ cursor:pointer;
 
 </div>
 
+<div class="grain"></div>
+
 <div id="blackFade"></div>
+
+<!-- KOD EKRANI -->
 
 <div id="codeScreen">
 
 <h1>LoveDate ❤️</h1>
+
 <p>Kodunuzu girin</p>
 
 <input id="code" placeholder="Kod">
+
 <button onclick="go()">Aç</button>
 
 </div>
@@ -239,6 +270,8 @@ wedge.style.opacity="1";
 sound.currentTime=0;
 sound.play().catch(()=>{});
 
+/* 3 */
+
 display.innerText="3";
 
 setTimeout(function(){
@@ -260,7 +293,7 @@ setTimeout(function(){
 
 document.getElementById("countdownScreen").style.display="none";
 fade.style.opacity="0";
-document.getElementById("codeScreen").style.display="block";
+document.getElementById("codeScreen").style.display="flex";
 
 },1000);
 
@@ -292,310 +325,7 @@ setTimeout(()=>heart.remove(),5000);
 
 }
 
-function go(){
-
-let code=document.getElementById("code").value.trim().toUpperCase();
-
-window.location.href="./page.html?code="+code;
-
-}
-
-</script>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="tr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>LoveDate ❤️</title>
-
-<style>
-
-body{
-margin:0;
-background:black;
-font-family:Arial;
-color:white;
-text-align:center;
-overflow:hidden;
-}
-
-/* COUNTDOWN SCREEN */
-
-#countdownScreen{
-position:fixed;
-width:100%;
-height:100%;
-background:#c5a06a;
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-/* film çizgileri */
-
-.filmTop,.filmBottom{
-position:absolute;
-width:100%;
-height:40px;
-background:repeating-linear-gradient(
-90deg,
-black 0px,
-black 20px,
-white 20px,
-white 40px
-);
-}
-
-.filmTop{top:0;}
-.filmBottom{bottom:0;}
-
-/* + çizgileri */
-
-.crossH{
-position:absolute;
-width:100%;
-height:3px;
-background:black;
-}
-
-.crossV{
-position:absolute;
-height:100%;
-width:3px;
-background:black;
-}
-
-/* halkalar */
-
-.circle1{
-position:absolute;
-width:420px;
-height:420px;
-border:8px solid rgba(255,255,255,0.9);
-border-radius:50%;
-}
-
-.circle2{
-position:absolute;
-width:340px;
-height:340px;
-border:8px solid rgba(255,255,255,0.9);
-border-radius:50%;
-}
-
-/* dönen dilim */
-
-.wedge{
-position:absolute;
-width:420px;
-height:420px;
-border-radius:50%;
-background:conic-gradient(
-rgba(0,0,0,0.35) 0deg,
-rgba(0,0,0,0.35) 70deg,
-transparent 70deg
-);
-animation:spin 0.9s linear infinite;
-opacity:0;
-}
-
-@keyframes spin{
-from{transform:rotate(0deg);}
-to{transform:rotate(360deg);}
-}
-
-/* sayı */
-
-#countdownNumber{
-font-size:240px;
-font-weight:900;
-color:black;
-position:absolute;
-font-family:Impact,Arial Black,sans-serif;
-}
-
-/* play */
-
-.playBtn{
-width:120px;
-height:120px;
-background:black;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
-z-index:10;
-}
-
-.playBtn:after{
-content:"";
-border-left:35px solid white;
-border-top:20px solid transparent;
-border-bottom:20px solid transparent;
-margin-left:5px;
-}
-
-/* kalpler */
-
-.heart{
-position:fixed;
-color:red;
-font-size:24px;
-animation:fly 5s linear infinite;
-}
-
-@keyframes fly{
-0%{transform:translateY(100vh);opacity:0}
-50%{opacity:1}
-100%{transform:translateY(-10vh);opacity:0}
-}
-
-/* kararma */
-
-#blackFade{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:black;
-opacity:0;
-transition:opacity 1s;
-}
-
-/* kod ekranı */
-
-#codeScreen{
-display:none;
-margin-top:40vh;
-}
-
-input{
-padding:12px;
-font-size:18px;
-border-radius:10px;
-border:none;
-text-align:center;
-}
-
-button{
-padding:12px 20px;
-font-size:18px;
-border:none;
-border-radius:10px;
-background:pink;
-cursor:pointer;
-}
-
-</style>
-</head>
-
-<body>
-
-<div id="countdownScreen">
-
-<div class="filmTop"></div>
-<div class="filmBottom"></div>
-
-<div class="crossH"></div>
-<div class="crossV"></div>
-
-<div class="circle1"></div>
-<div class="circle2"></div>
-
-<div class="wedge" id="wedge"></div>
-
-<div id="countdownNumber"></div>
-
-<div class="playBtn" onclick="startCountdown()"></div>
-
-</div>
-
-<div id="blackFade"></div>
-
-<div id="codeScreen">
-
-<h1>LoveDate ❤️</h1>
-<p>Kodunuzu girin</p>
-
-<input id="code" placeholder="Kod">
-<button onclick="go()">Aç</button>
-
-</div>
-
-<audio id="countSound" src="countdown.mp3"></audio>
-
-<script>
-
-function startCountdown(){
-
-document.querySelector(".playBtn").style.display="none";
-
-const wedge=document.getElementById("wedge");
-const display=document.getElementById("countdownNumber");
-const sound=document.getElementById("countSound");
-
-wedge.style.opacity="1";
-
-sound.currentTime=0;
-sound.play().catch(()=>{});
-
-display.innerText="3";
-
-setTimeout(function(){
-
-display.innerText="2";
-
-setTimeout(function(){
-
-display.innerText="1";
-
-setTimeout(function(){
-
-let fade=document.getElementById("blackFade");
-fade.style.opacity="1";
-
-startHearts();
-
-setTimeout(function(){
-
-document.getElementById("countdownScreen").style.display="none";
-fade.style.opacity="0";
-document.getElementById("codeScreen").style.display="block";
-
-},1000);
-
-},900);
-
-},1100);
-
-},1300);
-
-}
-
-/* kalpler */
-
-function startHearts(){
-
-setInterval(function(){
-
-let heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="❤";
-
-heart.style.left=Math.random()*100+"vw";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>heart.remove(),5000);
-
-},300);
-
-}
+/* kod yönlendirme */
 
 function go(){
 
