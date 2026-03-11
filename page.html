@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bizim Şarkımız ❤️</title>
+<title>LoveDate ❤️</title>
 
 <style>
 
@@ -15,61 +14,72 @@ background:black;
 color:white;
 font-family:Arial;
 text-align:center;
-}
-
-.container{
-margin-top:50px;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+height:100vh;
 }
 
 img{
-width:80%;
-max-width:350px;
-border-radius:20px;
-box-shadow:0 0 20px pink;
+max-width:90%;
+border-radius:15px;
+margin-bottom:20px;
 }
 
 button{
-margin-top:30px;
-padding:15px 30px;
+padding:14px 30px;
 font-size:18px;
 border:none;
 border-radius:30px;
-background:pink;
-color:black;
+background:#e91e63;
+color:white;
 cursor:pointer;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="container">
-
-<h1>Bizim Şarkımız ❤️</h1>
-
 <img id="foto">
 
-<br>
+<button onclick="playMusic()">Şarkıyı Çal ❤️</button>
 
-<button onclick="playMusic()">Şarkıyı Başlat 🎵</button>
-
-<audio id="sarki"></audio>
-
-</div>
+<audio id="music"></audio>
 
 <script>
 
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
 
-document.getElementById("foto").src = "./codes/"+code+"/foto.jpg";
+const foto = "codes/"+code+"/foto.jpg";
+const sarki = "codes/"+code+"/sarki.mp3";
 
-document.getElementById("sarki").src = "./codes/"+code+"/sarki.mp3";
+let img = new Image();
+
+img.onload = function(){
+
+document.getElementById("foto").src = foto;
+document.getElementById("music").src = sarki;
+
+}
+
+img.onerror = function(){
+
+document.body.innerHTML="<h1>Yanlış Kod ❌</h1>";
+
+}
+
+img.src = foto;
 
 function playMusic(){
-document.getElementById("sarki").play();
+
+document.getElementById("music").play();
+
 }
 
 </script>
+
+</body>
+</html>
