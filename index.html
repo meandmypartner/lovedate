@@ -53,13 +53,8 @@ cursor:pointer;
 
 function go(){
 
-var code=document.getElementById("code").value;
+var code=document.getElementById("code").value.trim().toUpperCase();
 
-window.location.href="codes/"+code+"/";
+window.location.href="./codes/"+code+"/";
 
 }
-
-</script>
-
-</body>
-</html>
